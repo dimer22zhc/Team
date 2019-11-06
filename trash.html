@@ -1,0 +1,76 @@
+<template>
+  <div>
+  	<div 
+        v-if="team.id === current_team.id" 
+        class="h-8 w-2 rounded bg-white absolute" 
+        style="left:-5px; top:1px"></div>
+    <div class="py-1" :style="team.id === current_team.id? 'background-color: #5b2c5d;' : ''">
+      <div class="flex px-4 items-center justify-between">
+        <div class="flex">
+          <div :style="{backgroundColor: randomColor(team.id)}" :class="team.id === current_team.id ? 'bg-gray-300' :'opacity-25 hover:opacity-75 bg-gray-300' " class=" focus:outline-none px-1 my-1  rounded font-bold flex items-center overflow-hidden">
+            <span class="text-sm text-white">{{team.name | team}}</span>
+          </div>
+          <router-link :tag="'div'"  :to="
+          $route.params.channel_id ? 
+          '/client/home/'+team.id+'/'+  $route.params.channel_id : 
+          '/client/home/'+team.id" 
+          class="mx-1 cursor-pointer flex items-center hover:opacity-100" :class="team.id === current_team.id ? 'text-white font-semibold':'text-white opacity-75 my-1'">
+            <span>{{team.name}}</span>
+            <svg v-if="team.id === current_team.id" class="fill-current mt-1 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+              <path class="heroicon-ui" d="M15.3 9.3a1 1 0 0 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 1.4-1.4l3.3 3.29 3.3-3.3z" />
+            </svg>
+            <svg v-else class=" fill-current mt-1 "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path class="heroicon-ui" d="M14.7 15.3a1 1 0 0 1-1.4 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.4 1.4L11.42 12l3.3 3.3z"/></svg>
+          </router-link>
+        </div>
+        <div v-if="menu" class="text-white cursor-pointer opacity-75 hover:opacity-100">
+          <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 -128 350.90199 350" width="18">
+            <path d="m350.902344 47.609375c0 26.046875-21.113282 47.160156-47.160156 47.160156-26.046876 0-47.160157-21.113281-47.160157-47.160156 0-26.042969 21.113281-47.160156 47.160157-47.160156 26.046874 0 47.160156 21.117187 47.160156 47.160156zm0 0" />
+            <path d="m222.609375 47.609375c0 26.046875-21.113281 47.160156-47.160156 47.160156-26.042969 0-47.160157-21.113281-47.160157-47.160156 0-26.042969 21.117188-47.160156 47.160157-47.160156 26.046875 0 47.160156 21.117187 47.160156 47.160156zm0 0" />
+            <path d="m94.320312 47.609375c0 26.046875-21.113281 47.160156-47.160156 47.160156s-47.160156-21.113281-47.160156-47.160156c0-26.042969 21.113281-47.160156 47.160156-47.160156s47.160156 21.117187 47.160156 47.160156zm0 0" /></svg>
+        </div>
+      </div>
+      <div class="my-1" v-show="team.id === current_team.id ">
+        <div v-for="channel in channels">
+          <router-link v-if="channel.team_id === team.id" :tag="'div'" :to="$route.params.thread_id ? 
+                  '/client/home/'+$route.params.team_id+'/'+channel.id+'/thread/'+$route.params.thread_id : 
+                  { name:'channel',params:{channel_id:channel.id}} " :class="channel.id === currentChannel? 'bg-blue-700 text-white' : ' opacity-75 text-white'  " class="bg-teal-dark flex items-center    hover:text-white hover:opacity-100 cursor-pointer  rounded-l pl-8">
+            <span class="font-semibold lowercase"><b class="text-sm">#</b> {{ channel.name}}</span>
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  props: { team: { type: Object } },
+  name: "TeamList",
+    data:()=>({
+    show:false,
+    menu:true,
+    colorCache: {}
+  }),
+  computed:{
+  	current_team: function() {
+      return this.$store.getters['team/team'](this.$route.params.team_id)
+    },
+    channels: function() {
+      return this.$store.state.channel.channels
+    },
+    currentChannel:function(){
+      if (this.$route.params.channel_id) {
+         return this.$store.getters['channel/channel'](this.$route.params.channel_id).id
+      }
+      return 0;
+     
+    },
+  },
+  methods:{
+     randomColor(id) {
+        const r = () => Math.floor(256 * Math.random());
+        return this.colorCache[id] || (this.colorCache[id] = `rgb(${r()}, ${r()}, ${r()})`);
+      }
+  }
+}
+
+</script>

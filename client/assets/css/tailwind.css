@@ -1,0 +1,60 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,700i,900&display=swap&subset=latin-ext');
+body , *{
+  outline: none;
+  font-size: 14.6px;
+	font-family: "Lato", sans-serif;
+}
+p {
+  margin: 0px;
+}
+#custom-scroll-bar::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#custom-scroll-bar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.29);
+}
+code {
+  padding: 0.1rem 0.3rem;
+  border-radius: 5px;
+  background: #eaeaea;
+  font-size: 14px;
+  color: #e26363;
+  overflow-x: auto;
+}
+pre code{
+  padding: 0.1rem 0.3rem;
+  border-radius: 5px;
+  background: $color-black !important;
+  color: #e26363;
+  font-size: 12px;
+  overflow-x: auto;
+  display: block;
+}
+pre code::-webkit-scrollbar {
+    width: 5px;
+    /* background-color: #F5F5F5; */
+    height: 8px;
+}
+pre code::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.29);
+}
+h1{
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+h2{
+  font-size: 24px !important;
+  font-weight: 600 !important ;
+}
+h3{
+  font-size: 30px !important;
+  font-weight: 700 !important;
+}
