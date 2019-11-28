@@ -20,96 +20,15 @@ This is A Team  build With Nuxt and Laravel
 ![Alt Text](https://thepracticaldev.s3.amazonaws.com/i/2m7ut2mdq58zokcobi1q.png)
 
 
-## Contents
-
-- [Installation](#installation)
-- [Configuration](#configuration)
-    - [User relation to teams](#user-relation-to-team)
-    - [Models](#models)
-        - [Team](#team)
-        - [User](#user)
-- [Usage](#usage)
-    - [Scaffoling](#scaffolding)
-    - [Basic concepts](#basic-concepts)
-    - [Get to know my team(s)](#know-my-teams)
-    - [Team owner](#team-owner)
-    - [Switching the current team](#switching-the-current-team)
-    - [Inviting others](#inviting-others)
-    - [Accepting invites](#accepting-invites)
-    - [Denying invites](#denying-invites)
-    - [Attach/Detach/Invite Events](#events)
-    - [Limit Models to current Team](#scope)
-- [License](#license)
-
-<a name="installation" />
-
 ## Installation
 
 
-## Configuration
+## Description
 
-### User relation to teams
+## Object of the project
 
+## Server requirements to install the application
 
-### Models
+## Project Instalation
 
-<a name="team" />
-
-#### Team
-
-
-#### User
-
-
-### Middleware
-
-
-**And you are ready to go.**
-
-<a name="usage" />
-
-## Usage
-
-
-### Scaffolding
-
-### Basic concepts
-
-
-### Get to know my team(s)
-
-
-### Team owner
-
-### Switching the current team
-
-
-### Inviting others
-
-**Note:**
-
-### Accepting invites
-
-### Denying invites
-
-
-### Attaching/Detaching/Invite Events
-
-
-### Limit Models to current Team
-
-
-**Note:**
-> 
-
-#### Usage
-
-
-**Example:**
-
-
-## License
-
-Team is not free software distributed under the terms of the MIT license.
-
-'Marvel Avengers' image licensed under [Creative Commons 2.0](https://creativecommons.org/licenses/by/2.0/) - Photo from [W_Minshull](https://www.flickr.com/photos/23950335@N07/8251484285/in/photostream/)
+## Used technologies
