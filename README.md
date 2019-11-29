@@ -1,5 +1,5 @@
 # Team
-This is A Team  build With Nuxt and Laravel
+This is A Team management platform  build With Nuxt and Laravel
 
 [![Latest Version](https://img.shields.io/packagist/v/mpociot/teamwork.svg)](https://github.com/mpociot/teamwork/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
