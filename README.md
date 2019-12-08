@@ -22,8 +22,11 @@ This is A Team management platform  build With Nuxt and Laravel
 - Laravel 6
 - SPA or SSR
 - Socialite integration
-- VueI18n + ESlint + Bootstrap 4 + Font Awesome 5
-- Login, register, email verification and password reset
+- VueI18n + ESlint + Bootstrap 4 + Font Awesome 5 + ant-design-vue + trix + vform 
+- Login, register, email verification and password reset.
+- Create teams, add people to team, invite people to team, create channels in a team, add people to a channel...
+- Create messages, favor a ms, copie ms, crud ms ...
+- Create Post ...
 
 ### Installation
 
