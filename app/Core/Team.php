@@ -42,6 +42,16 @@ class Team extends Model
     }
 
     /**
+     * a team can have Many files 
+     *
+     * @return mixed
+    */
+    public function files()
+    {
+        return $this->hasMany('App\Core\File','team_id');
+    }
+
+    /**
      * Create Channel model
      *
      * @return mixed

@@ -1,12 +1,12 @@
 <template >
   <div>
-    <div v-for="(threads,key) in threads">
+    <div v-for="(groupe,key) in threads">
       <div class="mx-32 flex justify-center my-4">
           <div class="font-semibold">
             {{formatDate(key) | capitalize}}
           </div>
       </div>
-      <thread v-for="thread in threads" :isThread="true" :isShareThread="false" :isSingleThread="false" :thread="thread" :key="thread.id" />
+      <thread v-for="(thread, index) in groupe" :nextThreadOwnerId="checkNextThreadOwner(groupe,index)" :isThread="true" :isShareThread="false" :isSingleThread="false" :thread="thread" :key="thread.id" />
     </div>
   </div>
 </template>
@@ -27,6 +27,15 @@ export default {
       let newD =  d.split("at")[0]
       let myFormatDate =  moment(date).format('DD-MM-YYYY')
       return newD + ',' +myFormatDate;
+    },
+    checkNextThreadOwner(threads,position){
+      try {
+        // statements  
+        return threads[position - 1] ? threads[position - 1].owner.id : 0
+      } catch(e) {
+        // statements
+        console.log(e);
+      }
     }
   }
 }

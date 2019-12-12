@@ -9,7 +9,7 @@
             <div class="flex-1 flex-col  overflow-hidden">
               <div class="flex-1 overflow-hidden">
                 <div class="leading-tight">
-                  <span class="font-extrabold">{{reply.owner.name | name}}</span>
+                  <span class="font-bold" style="color: #232020">{{reply.owner.name | name}}</span>
                   <span class="text-grey text-xs">12:46</span>
                 </div>
                 <p v-html="reply.body"  style="margin: 0px;color: rgb(56, 52, 52);-webkit-text-stroke: 0.1px;"></p>

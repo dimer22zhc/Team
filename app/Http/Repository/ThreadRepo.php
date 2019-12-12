@@ -22,11 +22,10 @@ class ThreadRepo{
 				'user_id' => $user->id,
 				'team_id' => $teamId,
 				'body' => $body,
-				'title'=>$title ? $title : null,
 				'type'=>$type ? $type : 'normal',
-				'description'=> $description ? $description : null
 			]);
-			if ($type!=='post') {
+
+			if ($type!=='post' && $thread->type !=='post') {
 				# code...
 				$archived = $this->archive($archive,$thread);
 					if ($archived) {
@@ -36,6 +35,24 @@ class ThreadRepo{
 						$thread->archives = [$archived];
 					}
 			}
+
+			if ($type ==='post' && $thread->type ==='post') {
+				# code...
+				$file = $this->createFile($thread, $type);
+				$post = $file->post()->create([
+					'content' => $body,
+					'title'=>$title,
+					'typeFile'=>$type,
+					'description'=> $description ? $description : null
+				]);
+				if ($file) {
+					# code...
+					$file->post = $post;
+					$thread->file = [$file];
+				}
+				
+					
+			}
 			return $thread->load('owner','replies');
 		}
 	}
@@ -43,19 +60,19 @@ class ThreadRepo{
 	public function archive($archive,$thread){
 
 		if ($archive) {
-			# code...
-				$threadModel   = $this->thread;
-        $threadObject  = ( new $threadModel() )->find( $archive[0] );
+		# code...createFile
+			$threadModel   = $this->thread;
+	        $threadObject  = ( new $threadModel() )->find( $archive[0] );
         if ($threadObject && $thread) {
             	# code...
         		return $thread->archives()->create([
 					'user_id'=>$threadObject->owner->id,
 					'archived_id'=>$threadObject->id,	
 					// 'team_id'=> $threadObject->owner->currentTeam->id
-					'channel_id'=>$threadObject->channel_id,
+					'channel_id'=> $archive[1],
 					'create_time' => $threadObject->created_at,
 					'content'=>$threadObject->body,
-					'type' => '1'
+					'type' => 'normal'
 				]);
             }
 		}
@@ -72,6 +89,16 @@ class ThreadRepo{
 				'description'=> $postDescription
 			]);
 		}
+
+
+	}
+	public function createFile($thread,  $type){
+		return $thread->files()->create([
+			'user_id'=>$thread->user_id,
+			'team_id'=>$thread->team_id,
+			'channel_id' => $thread->channel_id,
+			'typeFile'=>$type,
+		]);
 
 
 	}

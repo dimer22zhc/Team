@@ -70,7 +70,7 @@ class TeamRepo
     	}
     	
 		
-		if ($team != null) {
+		if ($team !== null) {
 
 			# code...
 			if (!$user->teams->contains( $team )) {
@@ -111,7 +111,7 @@ class TeamRepo
     	}
     	
 		
-		if ($channel !=null) {
+		if ($channel !==null) {
 			# code...
 			if (!$user->channels->contains( $channel )) {
 				# code...

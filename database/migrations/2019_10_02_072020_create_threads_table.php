@@ -19,8 +19,6 @@ class CreateThreadsTable extends Migration
             $table->unsignedBigInteger('channel_id');
             $table->unsignedBigInteger('team_id');
             $table->text('body');
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
             $table->string('avatar')->nullable();
             $table->string('type')->default('normal');
             $table->timestamps();

@@ -1,8 +1,9 @@
 <?php
 return [
   "driver" => "smtp",
-  "host" => "smtp.mailtrap.io",
-  "port" => 2525,
+  // "host" => "smtp.mailtrap.io",
+  "host" => "",
+  "port" => 25,
   "from" => array(
       "address" => "from@example.com",
       "name" => "Example"

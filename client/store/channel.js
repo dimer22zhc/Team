@@ -56,13 +56,16 @@ export const mutations={
 			channel.isFavorited = !channel.isFavorited
 		}
 	},
-	//add a threads to channelc
+	//add a threads to channel
 	ADD_THREAD(state,{thread,channel}){
 		let ts = state.channels[channel].threads[thread.created_at.split("T")[0]]
 		if (ts) {
 			 ts.push(thread)
 		}else {
-			state.channels[channel].threads = {...state.channels[channel].threads,...{[thread.created_at.split("T")[0]]:[thread]}}
+			state.channels[channel].threads = {
+				...state.channels[channel].threads,
+				...{[thread.created_at.split("T")[0]]:[thread]} 
+			}
 
 		}
 
@@ -136,8 +139,10 @@ export const actions={
 		commit("ADD_CHANNELS",{channels:[data]})
 	},
 	async loadThreads(context,channel){
+		if (!context.getters['channel'](channel).loaded) {
 			const {data} = await axios(`/channel/threads/${channel}`)
 			context.commit("ADD_CHANNEL_THREADS",{threads:data,channelId:channel})
+		}	
 	},
 	async addThread(context,{archive,thread,body,channel,description,title,type}){
 

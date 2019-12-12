@@ -102,6 +102,15 @@ Route::group(['middleware' => 'auth:api'], function () {
      Route::post('invite/{team}', 'Core\Invites\TeamInvitesController@invite');
      Route::get('auth/invite/accept/{token}', 'Core\Invites\TeamInvitesController@acceptInvite')->name('teams.accept_invite');
 
+     /*
+    |--------------------------------------------------------------------------
+    | *****files API's
+    |--------------------------------------------------------------------------
+    |*/
+
+    Route::get('file/{file}', 'Core\Channels\Files\FilesController@file');
+    Route::get('files', 'Core\Channels\Files\FilesController@files');  
+
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

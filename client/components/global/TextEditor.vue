@@ -77,7 +77,6 @@
 </template>
 
 <script>
-import Icon from '~/components/icon/Components/Icon'
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap'
 import {
   Blockquote,
@@ -101,7 +100,6 @@ export default {
   components: {
     EditorContent,
     EditorMenuBar,
-    Icon,
   },
   data() {
     return {

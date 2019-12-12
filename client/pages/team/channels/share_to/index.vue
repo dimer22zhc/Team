@@ -2,18 +2,33 @@
   <div style="width: 35.3333%" class=" flex flex-col overflow-hidden">
     <div class="w-full bg-gray-200">
       <div class="flex px-4  py-2 justify-between items-center">
-      	<div>
-      		<button @click="$router.back(-1)"><---</button>
-      		<div class="">back</div>
-        </div>
-        <div class="leading-snug">
-          <div class="font-extrabold">Share This message</div> 
-          
-          <div class="text-sm" v-if="thread.owner">
-            Created by  {{thread.owner.id === $store.state.auth.user.id ? "you" : thread.owner.name   | name | capitalize}}
+      	<div class="flex items-center">
+      		<button @click="$router.back(-1)" class=" rounded hover:bg-gray-300 mr-2 p-1">
+              <icon 
+                :classes="'fill-current opacity-100'" 
+                :width="25" 
+                :height="25" 
+                :name="'cheveron_left'" 
+                :viewBox="'0 0 24 24'"/>
+              
+          </button>
+          <div class="leading-snug">
+            <div class="font-extrabold">Share This message</div> 
+            
+            <div class="text-sm" v-if="thread.owner">
+              Created by  {{thread.owner.id === $store.state.auth.user.id ? "you" : thread.owner.name   | name | capitalize}}
+            </div>
+            <div v-else>Created by...</div>
           </div>
-          <div v-else>Created by...</div>
         </div>
+        <button class=" rounded hover:bg-gray-300 mr-2 p-1">
+           <icon 
+            :classes="'fill-current opacity-100'" 
+            :width="25" 
+            :height="25" 
+            :name="'x'" 
+            :viewBox="'0 0 24 24'"/>
+        </button>
       </div>
     </div>
     <div id="custom-scroll-bar" class="flex flex-col overflow-y-auto">
@@ -49,6 +64,7 @@
   </div>
 </template>
 <script>
+import Icon from '~/components/icon/Icon'
 import RightTopNav from '~/components/RightTopNav'
 import Thread from '~/components/channel/threads/Thread'
 export default {
@@ -58,7 +74,7 @@ export default {
     isLoading: false,
     selected:""
   }),
-  components: { RightTopNav, Thread },
+  components: { RightTopNav, Thread , Icon},
   computed: {
     thread() {
       return this.$store.getters['threads/single_thread'](this.$route.params.thread_id)

@@ -3,7 +3,7 @@
     <div class="border-b h-16 flex px-6 items-center flex-none">
       <div class="flex flex-col leading-tight h-10">
         <div class="flex flex-col" v-if="channel">
-          <span  class="text-grey-darkest mb-1 font-extrabold px-1 text-lg ">
+          <span  class="text-grey-darkest mb-1 text-black font-extrabold px-1 text-lg ">
             #{{ channel.name}}
           </span>
           <div >

@@ -61,16 +61,13 @@ class ThreadsController extends Controller
     public function getUserFavoriteThreads(Request $request){
         
 
-        $subTo = $request->user()->threads()
+        return $request->user()->threads()
             ->getQuery()
             ->join('thread_subscriptions','threads.id','=','thread_subscriptions.thread_id')
             ->where('team_id','=',$request->user()->current_team_id)
             ->distinct()
             ->selectRaw('threads.*')
             ->get();
-
-
-        return $subTo;
        
     }
 }

@@ -13,7 +13,7 @@ class Thread extends Model
     //
     protected $appends = ['favoritesCount','c_name', 'isFavorited','isSubscribedTo','reactions'];
 
-    protected $with =['owner','archives','replies'];
+    protected $with =['owner','archives','replies','files'];
 
     public function serializeDate(DateTimeInterface $date){
         return $date->format('c');
@@ -31,6 +31,10 @@ class Thread extends Model
 
     	return $this->hasMany('App\Core\ThreadArchive');
 
+    }
+
+    public function files(){
+        return $this->hasMany('App\Core\File');
     }
     public function reactions(){
         return $this->morphToMany('App\Core\Reaction','reactable');

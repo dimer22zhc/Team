@@ -57,6 +57,8 @@ const routes = [
             { path: 'thread/:thread_id', name: 'single-thread', component: page('team/channels/_thread/index.vue') },
             { path: 'activities', name: 'activities', component: page('team/channels/activities/index.vue') },
             { path: 'share/:thread_id', name: 'share', component: page('team/channels/share_to/index.vue') },
+            { path: 'file/:file_id', name: 'file', component: page('team/channels/_file/index.vue') },
+            { path: 'files', name: 'files', component: page('team/channels/files/index.vue') },
         ]
       },
       { path: ':team_id/:channel_id/post', 

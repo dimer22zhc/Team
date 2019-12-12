@@ -1,5 +1,5 @@
 <template>
-  <div  class="absolute w-64 h-64 bg-gray-100 border shadow rounded h-auto z-50"  style="top:-10px; right:60px" >
+  <div  class="absolute w-64 h-64 bg-gray-100 border shadow rounded h-auto"  style="top:-40px; right:23px; z-index: 99999" >
     <ul class="py-2">
       <li @click="subscribeToThread(thread.id,thread.created_at,thread.isSubscribedTo)" class="p-1 cursor-pointer  py-1 text-black pl-4 hover:bg-blue-600 ">
         <div class="hover:text-white opacity-75 hover:opacity-100">
