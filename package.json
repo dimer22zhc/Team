@@ -24,7 +24,7 @@
     "js-cookie": "^2.2.0",
     "laravel-echo": "^1.6.1",
     "marked": "^0.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nuxt": "^2.8.1",
     "popper.js": "^1.15.0",
     "pusher-js": "^5.0.2",
